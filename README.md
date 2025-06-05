@@ -87,7 +87,7 @@ A world-class, multi-tenant KYC SaaS platform for Ethiopia and Africa, built wit
 ---
 
 ## Quick Start (Development)
-1. Clone the repo and copy `.env.example` to `.env` in both `backend/` and `frontend/`.
+1. Clone the repo and copy `.env.example` to `.env` in the project root, `backend/`, and `frontend/`.
 2. Start the stack:
    ```sh
    docker-compose up --build
@@ -145,5 +145,5 @@ A world-class, multi-tenant KYC SaaS platform for Ethiopia and Africa, built wit
 
 Run:
 ```sh
-docker-compose build
-``` 
+docker-compose build  # run from the project root
+```
