@@ -1,0 +1,1 @@
+import{j as e}from"./index-BX3PuAv1.js";const a=()=>e.jsxs("div",{className:"p-8",children:[e.jsx("h1",{className:"text-3xl font-bold mb-4",children:"Client Dashboard"}),e.jsx("p",{children:"View KYC usage, manage your team, and see verification history here."})]});export{a as default};

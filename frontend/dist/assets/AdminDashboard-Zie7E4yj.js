@@ -1,0 +1,1 @@
+import{j as s}from"./index-BX3PuAv1.js";const a=()=>s.jsxs("div",{className:"p-8",children:[s.jsx("h1",{className:"text-3xl font-bold mb-4",children:"Admin Dashboard"}),s.jsx("p",{children:"Manage users, clients, billing, and view KYC logs here."})]});export{a as default};

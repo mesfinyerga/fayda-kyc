@@ -1,0 +1,68 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  build-test:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_DB: fayda_kyc
+          POSTGRES_USER: fayda_admin
+          POSTGRES_PASSWORD: strongpassword
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgres://fayda_admin:strongpassword@localhost:5432/fayda_kyc
+      DJANGO_SECRET_KEY: test-secret
+      DJANGO_DEBUG: true
+      DJANGO_ALLOWED_HOSTS: localhost,127.0.0.1
+      JWT_SECRET_KEY: test-jwt
+      STRIPE_API_KEY: test-stripe
+      CHAPA_API_KEY: test-chapa
+      TELEBIRR_API_KEY: test-telebirr
+      EMAIL_HOST: smtp.example.com
+      EMAIL_PORT: 587
+      EMAIL_HOST_USER: test@example.com
+      EMAIL_HOST_PASSWORD: testpass
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          pip install -r requirements.txt
+      - name: Run backend tests
+        run: |
+          cd backend
+          pytest
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm install
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm run build
+      # Add deployment steps here for Railway/Render/AWS
+      # - name: Deploy to Railway
+      #   uses: railwayapp/cli-action@v1
+      #   with:
+      #     ... 

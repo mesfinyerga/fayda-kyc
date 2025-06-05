@@ -1,0 +1,27 @@
+Django>=4.2,<5.0
+psycopg2-binary>=2.9
+# DRF and auth
+djangorestframework>=3.14
+django-cors-headers>=4.0
+# JWT
+djangorestframework-simplejwt>=5.2
+# Payments
+stripe>=7.0
+# Chapa and Telebirr (use requests for HTTP integration)
+requests>=2.31
+# API docs
+drf-yasg>=1.21
+# Audit, logging, and security
+python-dotenv>=1.0
+django-environ>=0.10
+# Testing
+pytest>=7.4
+pytest-django>=4.5
+# Async tasks (optional)
+celery>=5.3
+# Linting
+flake8>=6.0
+# For type checking
+mypy>=1.4
+# WSGI server
+gunicorn>=20.1 
